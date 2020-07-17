@@ -20,6 +20,26 @@ import MediumLabel from './MediumLabel';
 import SmallLabel from './SmallLabel';
 import Text from './Text';
 
+
+
+import Chart from "./Chart";
+import { CSVLink, CSVDownload } from "react-csv";
+
+
+const CVL = styled.div`
+background-color: white;
+color: white;
+margin: 0px;
+padding: 0px;
+height: 40px;
+border-radius: 10px;
+
+text-align: center;
+text-decoration: none;
+
+`;
+
+
 const Results = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +53,8 @@ const Results = styled.div`
 `;
 
 const LocationWrapper = styled.div`
-  flex-basis: 100%;
+   flex-basis: 100%;
+
 `;
 
 const CurrentWeatherWrapper = styled.div`
@@ -178,6 +199,14 @@ const Result = ({ weather }) => {
     weatherIcon = <FontAwesomeIcon icon={faSmog} />;
   }
 
+
+  const csvData = [
+    ["Country", "City", "Date", "Temperature","Highest Temperature", "Lowest Temperature", "Wind Speed", "Humidity",  "Description"],
+
+    [country, city, date, `${temp} °C `, `${highestTemp} °C` , `${lowestTemp} °C` , `${wind} mph`, `${humidity}%`,  description]
+  ];
+  
+
   return (
     <Results>
 
@@ -187,6 +216,8 @@ const Result = ({ weather }) => {
         </BigLabel>
         <SmallLabel weight="400">{date}</SmallLabel>
       </LocationWrapper>
+
+      
 
 
       <CurrentWeatherWrapper>
@@ -198,6 +229,21 @@ const Result = ({ weather }) => {
           </SmallLabel>
         </TemperatureWrapper>
       </CurrentWeatherWrapper>
+
+
+   
+
+    
+
+       <CVL> <CSVLink data={csvData}>Download me</CSVLink> </CVL>  
+
+      
+
+     
+
+
+
+
 
 
       <WeatherDetailsWrapper>
@@ -256,6 +302,11 @@ const Result = ({ weather }) => {
         </WeatherDetail>
 
       </WeatherDetailsWrapper>
+
+
+
+
+
 
 
       <ForecastWrapper>
