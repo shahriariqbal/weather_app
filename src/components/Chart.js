@@ -243,11 +243,16 @@ class Chart extends Component{
 
   render(){
     return (
-      <div className="chart">
+      <div           style={{
+
+        marginTop:"30px" 
+     
+       }}  className="chart">
 
 
 
         <Bar
+
           data={this.state.chartData}
           width={100}
           height={50}
