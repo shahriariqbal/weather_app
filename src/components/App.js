@@ -56,6 +56,13 @@ const AppTitle = styled.h1`
 
 
 
+const WeatherWrapper = styled.div`
+  max-width: 1500px;
+  margin: 0 auto;
+  height: calc(100vh - 64px);
+  width: 100%;
+  position: relative;
+`;
 
 
 
