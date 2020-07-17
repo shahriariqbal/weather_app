@@ -40,6 +40,9 @@ text-decoration: none;
 `;
 
 
+
+
+
 const Results = styled.div`
   display: flex;
   
@@ -73,6 +76,7 @@ const LocWeath = styled.div`
 
 const LocationWrapper = styled.div`
    flex-basis: 100%;
+   margin: 20px;
 
 `;
 
@@ -172,6 +176,9 @@ const Forecast = styled.div`
   }
 `;
 
+
+
+
 const Result = ({ weather }) => {
   const {
     city,
@@ -224,14 +231,19 @@ const Result = ({ weather }) => {
 
     [country, city, date, `${temp} °C `, `${highestTemp} °C` , `${lowestTemp} °C` , `${wind} mph`, `${humidity}%`,  description]
   ];
+
+
+
   
 
   return (
     <Results>
 
-<CVL> <CSVLink data={csvData}>Download me</CSVLink> </CVL>  
+{/* <CVL> <CSVLink  data={csvData}>Download me</CSVLink> </CVL>   */}
 
-<LocWeath>
+   
+
+
 
       <LocationWrapper>
         <BigLabel>
@@ -240,8 +252,32 @@ const Result = ({ weather }) => {
         <SmallLabel weight="400">{date}</SmallLabel>
       </LocationWrapper>
 
+
+      <MediumLabel>  
+
+ <CSVLink 
+ style={{
+   textDecoration:"none",
+    color: "white", 
+   backgroundColor: "rgba(0, 206, 86, 0.4)", 
+   padding: "10px",
+    borderRadius: "50px", 
+   border: "3px solid green" 
+
+  }} 
+   data={csvData}
+   >
+
+ Export Weather Report   
+      </CSVLink>  
+
+      </MediumLabel>  
+
+
+
       
 
+      <LocWeath>
 
       <CurrentWeatherWrapper>
         <WeatherIcon>{weatherIcon}</WeatherIcon>
@@ -254,7 +290,7 @@ const Result = ({ weather }) => {
       </CurrentWeatherWrapper>
 
 
-      </LocWeath>
+    
 
 
    
@@ -328,6 +364,9 @@ const Result = ({ weather }) => {
         </WeatherDetail>
 
       </WeatherDetailsWrapper>
+
+
+      </LocWeath>
 
 
       <Chart  weather={weather}  forecast={forecast} />
