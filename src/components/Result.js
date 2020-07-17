@@ -42,8 +42,9 @@ text-decoration: none;
 
 const Results = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  
+  flex-direction: column;
+  align-items: center;
   padding: 40px 0;
   opacity: 0;
   visibility: hidden;
@@ -51,6 +52,24 @@ const Results = styled.div`
   top: 20px;
   animation: ${ResultFadeIn} 0.5s 1.4s forwards;
 `;
+
+
+
+
+const LocWeath = styled.div`
+  display: flex;
+  
+  flex-direction: row;
+  justify-content:  space-between;
+  margin-top: 30px;
+
+  
+
+`;
+
+
+
+
 
 const LocationWrapper = styled.div`
    flex-basis: 100%;
@@ -63,7 +82,7 @@ const CurrentWeatherWrapper = styled.div`
   justify-content: center;
   align-items: center;
   grid-template-columns: auto 1fr;
-  margin: 20px 0;
+  margin-left:  20px;
   grid-gap: 30px;
   @media ${device.mobileL} {
     flex-basis: 50%;
@@ -210,6 +229,10 @@ const Result = ({ weather }) => {
   return (
     <Results>
 
+<CVL> <CSVLink data={csvData}>Download me</CSVLink> </CVL>  
+
+<LocWeath>
+
       <LocationWrapper>
         <BigLabel>
           {city}, {country}
@@ -231,11 +254,14 @@ const Result = ({ weather }) => {
       </CurrentWeatherWrapper>
 
 
+      </LocWeath>
+
+
    
 
-    
+   
 
-       <CVL> <CSVLink data={csvData}>Download me</CSVLink> </CVL>  
+       
 
       
 
@@ -302,6 +328,9 @@ const Result = ({ weather }) => {
         </WeatherDetail>
 
       </WeatherDetailsWrapper>
+
+
+      <Chart  weather={weather}  forecast={forecast} />
 
 
 
