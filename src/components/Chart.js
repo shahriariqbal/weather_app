@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie,  Doughnut} from 'react-chartjs-2';
 import { withTheme } from 'styled-components';
+import styled from 'styled-components';
+
+
+
+
+
+
+
+
+
+
 
 class Chart extends Component{
   constructor(props){
@@ -27,16 +38,16 @@ class Chart extends Component{
       
 
       chartData:{
-        labels: [ `Date:${props.forecast[0].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}` , 
-                  `Date:${props.forecast[1].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[2].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[3].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[4].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[5].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[6].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[7].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[8].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[9].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`
+        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
+                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
                   ],
         datasets:[
           {
@@ -74,16 +85,16 @@ class Chart extends Component{
 
 
       chartDataWind:{
-        labels: [ `Date:${props.forecast[0].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}` , 
-                  `Date:${props.forecast[1].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[2].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[3].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[4].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[5].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[6].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[7].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[8].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[9].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`
+        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
+                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
                   ],
         datasets:[
           {
@@ -120,16 +131,16 @@ class Chart extends Component{
       },
 
       chartDataHumidity:{
-        labels: [ `Date:${props.forecast[0].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}` , 
-                  `Date:${props.forecast[1].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[2].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[3].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[4].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[5].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[6].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[7].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[8].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[9].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`
+        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
+                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
                   ],
         datasets:[
           {
@@ -167,16 +178,17 @@ class Chart extends Component{
 
 
       chartDataPressure:{
-        labels: [ `Date:${props.forecast[0].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}` , 
-                  `Date:${props.forecast[1].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[2].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[3].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[4].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`, 
-                  `Date:${props.forecast[5].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[6].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[7].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[8].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`,
-                  `Date:${props.forecast[9].dt_txt.slice(8, 10)} Time:${ props.forecast[0].dt_txt.slice(11, 13) * 1}`
+        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
+                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
+                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
+                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
+             
                   ],
         datasets:[
           {
@@ -234,6 +246,7 @@ class Chart extends Component{
       <div className="chart">
 
 
+
         <Bar
           data={this.state.chartData}
           width={100}
@@ -243,13 +256,39 @@ class Chart extends Component{
               display:this.props.displayTitle,
               text:'Forecast Temperature in '+this.props.weather.city,
               fontSize:23,
-              fontColor: 'white'
+              fontColor: 'white',              
             },
             legend:{
               display:this.props.displayLegend,
-              position:this.props.legendPosition
-            }
+              position:this.props.legendPosition,
+              labels: {
+                fontColor: "white",
+                fontSize: 15
+             }
+            },
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      fontColor: "white",
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true
+                  }
+              }],
+              xAxes: [{
+                  ticks: {
+                      fontColor: "white",
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true
+                  }
+              }]
+          }
+
+
+
           }}
+         
         />
 
 
@@ -267,10 +306,37 @@ class Chart extends Component{
             },
             legend:{
               display:this.props.displayLegend,
-              position:this.props.legendPosition
-            }
+              position:this.props.legendPosition,
+              labels: {
+                fontColor: "white",
+                fontSize: 15
+             }
+            },
+
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      fontColor: "white",
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true
+                  }
+              }],
+              xAxes: [{
+                  ticks: {
+                      fontColor: "white",
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true
+                  }
+              }]
+          }
+
           }}
         />
+
+
+
 
 
 
@@ -285,7 +351,11 @@ class Chart extends Component{
             },
             legend:{
               display:this.props.displayLegend,
-              position:this.props.legendPosition
+              position:this.props.legendPosition,
+              labels: {
+                fontColor: "white",
+                fontSize: 15
+             }
             }
           }}
         />
@@ -302,8 +372,13 @@ class Chart extends Component{
             },
             legend:{
               display:this.props.displayLegend,
-              position:this.props.legendPosition
+              position:this.props.legendPosition,
+              labels: {
+                fontColor: "white",
+                fontSize: 15
+             }
             }
+
           }}
         />
 
