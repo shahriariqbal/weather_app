@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie,  Doughnut} from 'react-chartjs-2';
-import { withTheme } from 'styled-components';
-import styled from 'styled-components';
+import SmallLabel from './SmallLabel';
+
+
+
+
 
 
 
@@ -243,23 +246,20 @@ class Chart extends Component{
 
   render(){
     return (
-      <div           style={{
+      <div style={{  marginTop:"60px", display:"flex",  flexDirection:"column", alignItems:"center", width:"100%" }}  className="chart">
 
-        marginTop:"30px" 
      
-       }}  className="chart">
-
-
-
+       
+     
+     <div style={{   width:"80%" }} > 
         <Bar
-
           data={this.state.chartData}
           width={100}
           height={50}
           options={{
             title:{
               display:this.props.displayTitle,
-              text:'Forecast Temperature in '+this.props.weather.city,
+              text:'Forecast Temperature in'+ this.props.weather.city,
               fontSize:23,
               fontColor: 'white',              
             },
@@ -296,8 +296,12 @@ class Chart extends Component{
          
         />
 
+</div>
 
 
+
+
+        <div style={{ marginTop:"30px", width:"80%" }} >
         <Line
           data={this.state.chartDataWind}
           options={{
@@ -339,12 +343,16 @@ class Chart extends Component{
 
           }}
         />
+        </div>
+    
 
 
 
 
 
+    
 
+        <div style={{ marginTop:"30px", width:"80%" }}  >
         <Pie
           data={this.state.chartDataHumidity}
           options={{
@@ -365,7 +373,9 @@ class Chart extends Component{
           }}
         />
 
+</div>
 
+<div style={{  marginTop:"30px", width:"80%" }}  > 
         <Doughnut
           data={this.state.chartDataPressure}
           options={{
@@ -386,6 +396,10 @@ class Chart extends Component{
 
           }}
         />
+
+    </div>
+
+
 
 
 

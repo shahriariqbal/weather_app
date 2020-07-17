@@ -54,7 +54,7 @@ const LocWeath = styled.div`
   
   flex-wrap: wrap;
   justify-content:  space-between;
-  margin-top: 30px;
+  margin-top: 100px;
 
   
 
@@ -65,8 +65,10 @@ const LocWeath = styled.div`
 
 
 const LocationWrapper = styled.div`
-   flex-basis: 100%;
-   margin: 20px;
+display: flex; 
+ flex-direction: column; 
+ align-items: center;
+   margin-bottom: 20px;
 
 `;
 
