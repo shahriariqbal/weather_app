@@ -1,61 +1,66 @@
-import React, {Component} from 'react';
-import {Bar, Line, Pie,  Doughnut} from 'react-chartjs-2';
-import SmallLabel from './SmallLabel';
+import React, { Component } from 'react';
+import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Chart extends Component{
-  constructor(props){
-
+class Chart extends Component {
+  constructor(props) {
+    console.log(props.forecast[0].dt_txt.slice(8, 10));
+    console.log(props.forecast[0].dt_txt.slice(11, 13) * 1);
+    console.log(props.weather);
     console.log(props.forecast);
 
-    
-  
-    console.log( props.forecast[0].dt_txt.slice(8, 10) );
-    console.log(   props.forecast[0].dt_txt.slice(11, 13) * 1 );
-
-
-
-
-    console.log(props.forecast[0].weather[0].main);
-    console.log(props.forecast[1].main.temp);
-    console.log(props.forecast[3].main.temp);
-
-    console.log(props.weather);
-
-
     super(props);
-    this.state = {
-      
 
-      chartData:{
-        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
-                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
-                  ],
-        datasets:[
+    this.state = {
+
+
+      chartData: {
+        labels: [
+          `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[0].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[20].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[24].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[28].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[32].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[37].dt_txt.slice(11, 13) * 1}:00`,
+        ],
+        datasets: [
           {
-            label:'Temperature',
-            data:[
+            label: 'Temperature',
+            data: [
               props.forecast[0].main.temp,
               props.forecast[1].main.temp,
               props.forecast[2].main.temp,
@@ -67,7 +72,7 @@ class Chart extends Component{
               props.forecast[8].main.temp,
               props.forecast[9].main.temp,
             ],
-            backgroundColor:[
+            backgroundColor: [
               'rgba(255, 99, 132, 0.8)',
               'rgba(54, 162, 235, 0.8)',
               'rgba(255, 206, 86, 0.8)',
@@ -78,31 +83,59 @@ class Chart extends Component{
               'rgba(53, 0, 255, 0.8)',
               'rgba(255, 0, 86, 0.8)',
               'rgba(0, 206, 86, 0.8)',
-              
             ],
-            borderColor: '#FFFFFF'
-           
-          }
-        ]
+            borderColor: '#FFFFFF',
+          },
+        ],
       },
 
-
-      chartDataWind:{
-        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
-                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
-                  ],
-        datasets:[
+      chartDataWind: {
+        labels: [
+          `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[0].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[20].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[24].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[28].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[32].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[37].dt_txt.slice(11, 13) * 1}:00`,
+        ],
+        datasets: [
           {
-            label:'Wind Speed',
-            data:[
+            label: 'Wind Speed',
+            data: [
               props.forecast[0].wind.speed,
               props.forecast[1].wind.speed,
               props.forecast[2].wind.speed,
@@ -114,8 +147,8 @@ class Chart extends Component{
               props.forecast[8].wind.speed,
               props.forecast[9].wind.speed,
             ],
-            backgroundColor:[
-              'rgba(255, 99, 132, 1)',
+            backgroundColor: [
+              'rgba(255, 99, 132, .6)',
               'rgba(54, 162, 235, 1)',
               'rgba(255, 206, 86, 1)',
               'rgba(75, 192, 192, 1)',
@@ -125,30 +158,59 @@ class Chart extends Component{
               'rgba(53, 0, 255, 1)',
               'rgba(255, 0, 86, 1)',
               'rgba(0, 206, 86, 1)',
-              
             ],
-            borderColor: '#FFFFFF'
-           
-          }
-        ]
+            borderColor: '#FFFFFF',
+          },
+        ],
       },
 
-      chartDataHumidity:{
-        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
-                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
-                  ],
-        datasets:[
+      chartDataHumidity: {
+        labels: [
+          `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[0].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[20].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[24].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[28].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[32].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[37].dt_txt.slice(11, 13) * 1}:00`,
+        ],
+        datasets: [
           {
-            label:'Wind Speed',
-            data:[
+            label: 'Wind Speed',
+            data: [
               props.forecast[0].main.humidity,
               props.forecast[1].main.humidity,
               props.forecast[2].main.humidity,
@@ -160,7 +222,7 @@ class Chart extends Component{
               props.forecast[8].main.humidity,
               props.forecast[9].main.humidity,
             ],
-            backgroundColor:[
+            backgroundColor: [
               'rgba(255, 99, 132, .5)',
               'rgba(54, 162, 235, .5)',
               'rgba(255, 206, 86, .5)',
@@ -171,32 +233,59 @@ class Chart extends Component{
               'rgba(53, 0, 255, .5)',
               'rgba(255, 0, 86, .5)',
               'rgba(0, 206, 86, .5)',
-              
             ],
-            borderColor: '#FFFFFF'
-           
-          }
-        ]
+            borderColor: '#FFFFFF',
+          },
+        ],
       },
 
-
-      chartDataPressure:{
-        labels: [ `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(8, 10)}, ${ props.forecast[0].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(8, 10)}, ${ props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(8, 10)}, ${ props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(8, 10)}, ${ props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(8, 10)}, ${ props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,  
-                  `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(8, 10)}, ${ props.forecast[20].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(8, 10)}, ${ props.forecast[24].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(8, 10)}, ${ props.forecast[28].dt_txt.slice(11, 13) * 1}:00`, 
-                  `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(8, 10)}, ${ props.forecast[32].dt_txt.slice(11, 13) * 1}:00` ,
-                  `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(8, 10)}, ${ props.forecast[37].dt_txt.slice(11, 13) * 1}:00` 
-             
-                  ],
-        datasets:[
+      chartDataPressure: {
+        labels: [
+          `${props.forecast[0].dt_txt.slice(5, 7)}/${props.forecast[0].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[0].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[4].dt_txt.slice(5, 7)}/${props.forecast[4].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[4].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[8].dt_txt.slice(5, 7)}/${props.forecast[8].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[8].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[12].dt_txt.slice(5, 7)}/${props.forecast[12].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[12].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[16].dt_txt.slice(5, 7)}/${props.forecast[16].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[16].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[20].dt_txt.slice(5, 7)}/${props.forecast[20].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[20].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[24].dt_txt.slice(5, 7)}/${props.forecast[24].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[24].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[28].dt_txt.slice(5, 7)}/${props.forecast[28].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[28].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[32].dt_txt.slice(5, 7)}/${props.forecast[32].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[32].dt_txt.slice(11, 13) * 1}:00`,
+          `${props.forecast[37].dt_txt.slice(5, 7)}/${props.forecast[37].dt_txt.slice(
+            8,
+            10,
+          )}, ${props.forecast[37].dt_txt.slice(11, 13) * 1}:00`,
+        ],
+        datasets: [
           {
-            label:'Pressure Altitude',
-            data:[
+            label: 'Pressure Altitude',
+            data: [
               props.forecast[0].main.pressure,
               props.forecast[1].main.pressure,
               props.forecast[2].main.pressure,
@@ -208,7 +297,7 @@ class Chart extends Component{
               props.forecast[8].main.pressure,
               props.forecast[9].main.pressure,
             ],
-            backgroundColor:[
+            backgroundColor: [
               'rgba(255, 99, 132, .7)',
               'rgba(54, 162, 235, .7)',
               'rgba(255, 206, 86, .7)',
@@ -219,193 +308,186 @@ class Chart extends Component{
               'rgba(53, 0, 255, .7)',
               'rgba(255, 0, 86, .7)',
               'rgba(0, 206, 86, .7)',
-              
             ],
-            borderColor: '#FFFFFF'
-           
-          }
-        ]
-      }
-
-
-
-
-    
-
-
-
-    }
+            borderColor: '#FFFFFF',
+          },
+        ],
+      },
+    };
   }
 
   static defaultProps = {
-    displayTitle:true,
+    displayTitle: true,
     displayLegend: true,
-    legendPosition:'right',
-    location:''
-  }
+    legendPosition: 'right',
+    location: '',
+  };
 
-  render(){
+
+  render() {
     return (
-      <div style={{  marginTop:"60px", display:"flex",  flexDirection:"column", alignItems:"center", width:"100%" }}  className="chart">
+      <div
+        style={{
+          marginTop: '60px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+        }}
+        className="chart"
+      >
 
-     
-       
-     
-     <div style={{   width:"80%" }} > 
-        <Bar
-          data={this.state.chartData}
-          width={100}
-          height={50}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'Forecast Temperature in'+ this.props.weather.city,
-              fontSize:23,
-              fontColor: 'white',              
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition,
-              labels: {
-                fontColor: "white",
-                fontSize: 15
-             }
-            },
-            scales: {
-              yAxes: [{
-                  ticks: {
-                      fontColor: "white",
+
+
+        <div style={{ width: '80%' }}>
+
+          <Bar
+            data={this.state.chartData}
+            width={100}
+            height={50}
+            options={{
+              title: {
+                display: this.props.displayTitle,
+                text: 'Forecast Temperature in ' + this.props.weather.city,
+                fontSize: 22,
+                fontColor: 'white',
+              },
+              legend: {
+                display: this.props.displayLegend,
+                position: this.props.legendPosition,
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 15,
+                },
+              },
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
                       fontSize: 13,
                       stepSize: 1,
-                      beginAtZero: true
-                  }
-              }],
-              xAxes: [{
-                  ticks: {
-                      fontColor: "white",
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+                xAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
                       fontSize: 13,
                       stepSize: 1,
-                      beginAtZero: true
-                  }
-              }]
-          }
-
-
-
-          }}
-         
-        />
-
-</div>
-
-
-
-
-        <div style={{ marginTop:"30px", width:"80%" }} >
-        <Line
-          data={this.state.chartDataWind}
-          options={{
-            title:{
-              color: 'white',
-              display:this.props.displayTitle,
-              text:'Forecast Wind Speed in  '+this.props.weather.city,
-              fontSize:23,
-              fontColor: 'white'
-             
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition,
-              labels: {
-                fontColor: "white",
-                fontSize: 15
-             }
-            },
-
-            scales: {
-              yAxes: [{
-                  ticks: {
-                      fontColor: "white",
-                      fontSize: 13,
-                      stepSize: 1,
-                      beginAtZero: true
-                  }
-              }],
-              xAxes: [{
-                  ticks: {
-                      fontColor: "white",
-                      fontSize: 13,
-                      stepSize: 1,
-                      beginAtZero: true
-                  }
-              }]
-          }
-
-          }}
-        />
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
         </div>
-    
 
 
+        <div style={{ marginTop: '40px', width: '80%' }}>
+
+          <Line
+            data={this.state.chartDataWind}
+            options={{
+              title: {
+                color: 'white',
+                display: this.props.displayTitle,
+                text: 'Forecast Wind Speed in  ' + this.props.weather.city,
+                fontSize: 22,
+                fontColor: 'white',
+              },
+              legend: {
+                display: this.props.displayLegend,
+                position: this.props.legendPosition,
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 15,
+                },
+              },
+
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+                xAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
+                      fontSize: 13,
+                      stepSize: 1,
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
+
+        </div>
 
 
+        <div style={{ marginTop: '40px', width: '80%' }}>
 
-    
+          <Pie
+            data={this.state.chartDataHumidity}
+            options={{
+              title: {
+                display: this.props.displayTitle,
+                text: 'Forecast Humidity in ' + this.props.weather.city,
+                fontSize: 22,
+                fontColor: 'white',
+              },
+              legend: {
+                display: this.props.displayLegend,
+                position: this.props.legendPosition,
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 15,
+                },
+              },
+            }}
+          />
 
-        <div style={{ marginTop:"30px", width:"80%" }}  >
-        <Pie
-          data={this.state.chartDataHumidity}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'Forecast Humidy in '+this.props.weather.city,
-              fontSize:23,
-              fontColor: 'white'
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition,
-              labels: {
-                fontColor: "white",
-                fontSize: 15
-             }
-            }
-          }}
-        />
-
-</div>
-
-<div style={{  marginTop:"30px", width:"80%" }}  > 
-        <Doughnut
-          data={this.state.chartDataPressure}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'Forecast Pressure in '+this.props.weather.city,
-              fontSize:23,
-              fontColor: 'white'
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition,
-              labels: {
-                fontColor: "white",
-                fontSize: 15
-             }
-            }
-
-          }}
-        />
-
-    </div>
+        </div>
 
 
+        <div style={{ marginTop: '40px', width: '80%' }}>
 
+          <Doughnut
+            data={this.state.chartDataPressure}
+            options={{
+              title: {
+                display: this.props.displayTitle,
+                text: 'Forecast Pressure in ' + this.props.weather.city,
+                fontSize: 23,
+                fontColor: 'white',
+              },
+              legend: {
+                display: this.props.displayLegend,
+                position: this.props.legendPosition,
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 15,
+                },
+              },
+            }}
+          />
 
-
+        </div>
 
       </div>
-    )
+      
+    );
   }
 }
 

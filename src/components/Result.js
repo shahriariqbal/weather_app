@@ -20,21 +20,13 @@ import MediumLabel from './MediumLabel';
 import SmallLabel from './SmallLabel';
 import Text from './Text';
 
-
-
-import Chart from "./Chart";
-import { CSVLink, CSVDownload } from "react-csv";
-
-
-
-
-
-
+import Chart from './Chart';
+import { CSVLink, CSVDownload } from 'react-csv';
 
 
 const Results = styled.div`
   display: flex;
-  
+
   flex-direction: column;
   align-items: center;
   padding: 40px 0;
@@ -45,31 +37,19 @@ const Results = styled.div`
   animation: ${ResultFadeIn} 0.5s 1.4s forwards;
 `;
 
-
-
-
 const LocWeath = styled.div`
   display: flex;
   width: 90%;
-  
   flex-wrap: wrap;
-  justify-content:  space-between;
+  justify-content: space-between;
   margin-top: 100px;
-
-  
-
 `;
 
-
-
-
-
 const LocationWrapper = styled.div`
-display: flex; 
- flex-direction: column; 
- align-items: center;
-   margin-bottom: 20px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 `;
 
 const CurrentWeatherWrapper = styled.div`
@@ -168,9 +148,6 @@ const Forecast = styled.div`
   }
 `;
 
-
-
-
 const Result = ({ weather }) => {
   const {
     city,
@@ -188,6 +165,7 @@ const Result = ({ weather }) => {
     forecast,
   } = weather;
 
+
   const forecasts = forecast.map(item => (
     <ForecastHour
       key={item.dt}
@@ -198,6 +176,7 @@ const Result = ({ weather }) => {
       hour={item.dt_txt.slice(11, 13) * 1}
     />
   ));
+
 
   let weatherIcon = null;
 
@@ -217,172 +196,194 @@ const Result = ({ weather }) => {
     weatherIcon = <FontAwesomeIcon icon={faSmog} />;
   }
 
+  const csvData = [
+    [
+      'Date',
+      'Time',
+      'Country',
+      'City',
+      'Temperature',
+      'Highest Temperature',
+      'Lowest Temperature',
+      'Wind Speed',
+      'Humidity',
+      'Air Pressure',
+      'Description',
+    ],
 
-
-    const csvData = [
-      ["Date","Time", "Country", "City",  "Temperature","Highest Temperature", "Lowest Temperature", "Wind Speed", "Humidity",  "Air Pressure", "Description"],
-  
-      [
-      `${forecast[0].dt_txt.slice(2, 4)}/${forecast[0].dt_txt.slice(5, 7)}/${forecast[0].dt_txt.slice(8, 10)}`,
-      `${ forecast[0].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[0].main.temp} °C `, 
-      `${forecast[0].main.temp_max} °C `, 
-      `${forecast[0].main.temp_min} °C `, 
-      `${forecast[0].wind.speed} mph`, 
-      `${forecast[0].main.humidity}%`,  
+    [
+      `${forecast[0].dt_txt.slice(2, 4)}/${forecast[0].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[0].dt_txt.slice(8, 10)}`,
+      `${forecast[0].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[0].main.temp} °C `,
+      `${forecast[0].main.temp_max} °C `,
+      `${forecast[0].main.temp_min} °C `,
+      `${forecast[0].wind.speed} mph`,
+      `${forecast[0].main.humidity}%`,
       `${forecast[0].main.pressure}`,
-      `${forecast[0].weather[0].description}`
+      `${forecast[0].weather[0].description}`,
     ],
 
     [
-      `${forecast[4].dt_txt.slice(2, 4)}/${forecast[4].dt_txt.slice(5, 7)}/${forecast[4].dt_txt.slice(8, 10)}`,
-      `${ forecast[4].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[4].main.temp} °C `, 
-      `${forecast[4].main.temp_max} °C `, 
-      `${forecast[4].main.temp_min} °C `, 
-      `${forecast[4].wind.speed} mph`, 
-      `${forecast[4].main.humidity}%`,  
+      `${forecast[4].dt_txt.slice(2, 4)}/${forecast[4].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[4].dt_txt.slice(8, 10)}`,
+      `${forecast[4].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[4].main.temp} °C `,
+      `${forecast[4].main.temp_max} °C `,
+      `${forecast[4].main.temp_min} °C `,
+      `${forecast[4].wind.speed} mph`,
+      `${forecast[4].main.humidity}%`,
       `${forecast[4].main.pressure}`,
-      `${forecast[4].weather[0].description}`
+      `${forecast[4].weather[0].description}`,
     ],
 
     [
-      `${forecast[8].dt_txt.slice(2, 4)}/${forecast[8].dt_txt.slice(5, 7)}/${forecast[8].dt_txt.slice(8, 10)}`,
-      `${ forecast[8].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[8].main.temp} °C `, 
-      `${forecast[8].main.temp_max} °C `, 
-      `${forecast[8].main.temp_min} °C `, 
-      `${forecast[8].wind.speed} mph`, 
-      `${forecast[8].main.humidity}%`,  
+      `${forecast[8].dt_txt.slice(2, 4)}/${forecast[8].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[8].dt_txt.slice(8, 10)}`,
+      `${forecast[8].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[8].main.temp} °C `,
+      `${forecast[8].main.temp_max} °C `,
+      `${forecast[8].main.temp_min} °C `,
+      `${forecast[8].wind.speed} mph`,
+      `${forecast[8].main.humidity}%`,
       `${forecast[8].main.pressure}`,
-      `${forecast[8].weather[0].description}`
+      `${forecast[8].weather[0].description}`,
     ],
 
     [
-      `${forecast[12].dt_txt.slice(2, 4)}/${forecast[12].dt_txt.slice(5, 7)}/${forecast[12].dt_txt.slice(8, 10)}`,
-      `${ forecast[12].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[12].main.temp} °C `, 
-      `${forecast[12].main.temp_max} °C `, 
-      `${forecast[12].main.temp_min} °C `, 
-      `${forecast[12].wind.speed} mph`, 
-      `${forecast[12].main.humidity}%`,  
+      `${forecast[12].dt_txt.slice(2, 4)}/${forecast[12].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[12].dt_txt.slice(8, 10)}`,
+      `${forecast[12].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[12].main.temp} °C `,
+      `${forecast[12].main.temp_max} °C `,
+      `${forecast[12].main.temp_min} °C `,
+      `${forecast[12].wind.speed} mph`,
+      `${forecast[12].main.humidity}%`,
       `${forecast[12].main.pressure}`,
-      `${forecast[12].weather[0].description}`
+      `${forecast[12].weather[0].description}`,
     ],
 
     [
-      `${forecast[16].dt_txt.slice(2, 4)}/${forecast[16].dt_txt.slice(5, 7)}/${forecast[16].dt_txt.slice(8, 10)}`,
-      `${ forecast[16].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[16].main.temp} °C `, 
-      `${forecast[16].main.temp_max} °C `, 
-      `${forecast[16].main.temp_min} °C `, 
-      `${forecast[16].wind.speed} mph`, 
-      `${forecast[16].main.humidity}%`,  
+      `${forecast[16].dt_txt.slice(2, 4)}/${forecast[16].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[16].dt_txt.slice(8, 10)}`,
+      `${forecast[16].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[16].main.temp} °C `,
+      `${forecast[16].main.temp_max} °C `,
+      `${forecast[16].main.temp_min} °C `,
+      `${forecast[16].wind.speed} mph`,
+      `${forecast[16].main.humidity}%`,
       `${forecast[16].main.pressure}`,
-      `${forecast[16].weather[0].description}`
+      `${forecast[16].weather[0].description}`,
     ],
 
-
     [
-      `${forecast[20].dt_txt.slice(2, 4)}/${forecast[20].dt_txt.slice(5, 7)}/${forecast[20].dt_txt.slice(8, 10)}`,
-      `${ forecast[20].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[20].main.temp} °C `, 
-      `${forecast[20].main.temp_max} °C `, 
-      `${forecast[20].main.temp_min} °C `, 
-      `${forecast[20].wind.speed} mph`, 
-      `${forecast[20].main.humidity}%`,  
+      `${forecast[20].dt_txt.slice(2, 4)}/${forecast[20].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[20].dt_txt.slice(8, 10)}`,
+      `${forecast[20].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[20].main.temp} °C `,
+      `${forecast[20].main.temp_max} °C `,
+      `${forecast[20].main.temp_min} °C `,
+      `${forecast[20].wind.speed} mph`,
+      `${forecast[20].main.humidity}%`,
       `${forecast[20].main.pressure}`,
-      `${forecast[20].weather[0].description}`
+      `${forecast[20].weather[0].description}`,
     ],
 
     [
-      `${forecast[24].dt_txt.slice(2, 4)}/${forecast[24].dt_txt.slice(5, 7)}/${forecast[24].dt_txt.slice(8, 10)}`,
-      `${ forecast[24].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[24].main.temp} °C `, 
-      `${forecast[24].main.temp_max} °C `, 
-      `${forecast[24].main.temp_min} °C `, 
-      `${forecast[24].wind.speed} mph`, 
-      `${forecast[24].main.humidity}%`,  
+      `${forecast[24].dt_txt.slice(2, 4)}/${forecast[24].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[24].dt_txt.slice(8, 10)}`,
+      `${forecast[24].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[24].main.temp} °C `,
+      `${forecast[24].main.temp_max} °C `,
+      `${forecast[24].main.temp_min} °C `,
+      `${forecast[24].wind.speed} mph`,
+      `${forecast[24].main.humidity}%`,
       `${forecast[24].main.pressure}`,
-      `${forecast[24].weather[0].description}`
+      `${forecast[24].weather[0].description}`,
     ],
 
     [
-      `${forecast[28].dt_txt.slice(2, 4)}/${forecast[28].dt_txt.slice(5, 7)}/${forecast[28].dt_txt.slice(8, 10)}`,
-      `${ forecast[28].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[28].main.temp} °C `, 
-      `${forecast[28].main.temp_max} °C `, 
-      `${forecast[28].main.temp_min} °C `, 
-      `${forecast[28].wind.speed} mph`, 
-      `${forecast[28].main.humidity}%`,  
+      `${forecast[28].dt_txt.slice(2, 4)}/${forecast[28].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[28].dt_txt.slice(8, 10)}`,
+      `${forecast[28].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[28].main.temp} °C `,
+      `${forecast[28].main.temp_max} °C `,
+      `${forecast[28].main.temp_min} °C `,
+      `${forecast[28].wind.speed} mph`,
+      `${forecast[28].main.humidity}%`,
       `${forecast[28].main.pressure}`,
-      `${forecast[28].weather[0].description}`
+      `${forecast[28].weather[0].description}`,
     ],
 
     [
-      `${forecast[32].dt_txt.slice(2, 4)}/${forecast[32].dt_txt.slice(5, 7)}/${forecast[32].dt_txt.slice(8, 10)}`,
-      `${ forecast[32].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[32].main.temp} °C `, 
-      `${forecast[32].main.temp_max} °C `, 
-      `${forecast[32].main.temp_min} °C `, 
-      `${forecast[32].wind.speed} mph`, 
-      `${forecast[32].main.humidity}%`,  
+      `${forecast[32].dt_txt.slice(2, 4)}/${forecast[32].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[32].dt_txt.slice(8, 10)}`,
+      `${forecast[32].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[32].main.temp} °C `,
+      `${forecast[32].main.temp_max} °C `,
+      `${forecast[32].main.temp_min} °C `,
+      `${forecast[32].wind.speed} mph`,
+      `${forecast[32].main.humidity}%`,
       `${forecast[32].main.pressure}`,
-      `${forecast[32].weather[0].description}`
+      `${forecast[32].weather[0].description}`,
     ],
 
     [
-      `${forecast[36].dt_txt.slice(2, 4)}/${forecast[36].dt_txt.slice(5, 7)}/${forecast[36].dt_txt.slice(8, 10)}`,
-      `${ forecast[36].dt_txt.slice(11, 13) * 1}:00`,
-      country, 
-      city,  
-      `${forecast[36].main.temp} °C `, 
-      `${forecast[36].main.temp_max} °C `, 
-      `${forecast[36].main.temp_min} °C `, 
-      `${forecast[36].wind.speed} mph`, 
-      `${forecast[36].main.humidity}%`,  
+      `${forecast[36].dt_txt.slice(2, 4)}/${forecast[36].dt_txt.slice(
+        5,
+        7,
+      )}/${forecast[36].dt_txt.slice(8, 10)}`,
+      `${forecast[36].dt_txt.slice(11, 13) * 1}:00`,
+      country,
+      city,
+      `${forecast[36].main.temp} °C `,
+      `${forecast[36].main.temp_max} °C `,
+      `${forecast[36].main.temp_min} °C `,
+      `${forecast[36].wind.speed} mph`,
+      `${forecast[36].main.humidity}%`,
       `${forecast[36].main.pressure}`,
-      `${forecast[36].weather[0].description}`
-    ]
-
-
-
-    ];
-
-
-
-
-
-
-
-  
+      `${forecast[36].weather[0].description}`,
+    ],
+  ];
 
   return (
     <Results>
-
-
-
-   
-
-
 
       <LocationWrapper>
         <BigLabel>
@@ -391,136 +392,90 @@ const Result = ({ weather }) => {
         <SmallLabel weight="400">{date}</SmallLabel>
       </LocationWrapper>
 
+      <MediumLabel>
+        <CSVLink
+          style={{
+            textDecoration: 'none',
+            color: 'white',
+            backgroundColor: 'rgba(0, 206, 86, 0.4)',
+            padding: '10px',
+            borderRadius: '50px',
+            border: '3px solid green',
+          }}
+          data={csvData}
+        >
+          Download Weather Report
+        </CSVLink>
+      </MediumLabel>
 
-      <MediumLabel>  
-
- <CSVLink 
- style={{
-   textDecoration:"none",
-    color: "white", 
-   backgroundColor: "rgba(0, 206, 86, 0.4)", 
-   padding: "10px",
-    borderRadius: "50px", 
-   border: "3px solid green" 
-
-  }} 
-   data={csvData}
-   >
-
- Export Weather Report   
-      </CSVLink>  
-
-      </MediumLabel>  
-
-
-
-      
 
       <LocWeath>
 
-      <CurrentWeatherWrapper>
-        <WeatherIcon>{weatherIcon}</WeatherIcon>
-        <TemperatureWrapper>
-          <Temperature>{Math.floor(temp)}&#176;</Temperature>
-          <SmallLabel weight="400" firstToUpperCase>
-            {description}
-          </SmallLabel>
-        </TemperatureWrapper>
-      </CurrentWeatherWrapper>
+        <CurrentWeatherWrapper>
+          <WeatherIcon>{weatherIcon}</WeatherIcon>
+          <TemperatureWrapper>
+            <Temperature>{Math.floor(temp)}&#176;</Temperature>
+            <SmallLabel weight="400" firstToUpperCase>
+              {description}
+            </SmallLabel>
+          </TemperatureWrapper>
+        </CurrentWeatherWrapper>
 
 
-    
+        <WeatherDetailsWrapper>
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {Math.floor(highestTemp)}&#176;
+            </SmallLabel>
 
+            <Text align="center">Hight</Text>
+          </WeatherDetail>
 
-   
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {wind}mph
+            </SmallLabel>
 
-   
+            <Text align="center">Wind</Text>
+          </WeatherDetail>
 
-       
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {sunrise}
+            </SmallLabel>
+            <Text align="center">Sunrise</Text>
+          </WeatherDetail>
 
-      
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {Math.floor(lowestTemp)}&#176;
+            </SmallLabel>
+            <Text align="center">Low</Text>
+          </WeatherDetail>
 
-     
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {humidity}%
+            </SmallLabel>
+            <Text align="center">Rain</Text>
+          </WeatherDetail>
 
-
-
-
-
-
-      <WeatherDetailsWrapper>
-
-        <WeatherDetail>
-          <SmallLabel align="center" weight="400">
-            {Math.floor(highestTemp)}&#176;
-          </SmallLabel>
-
-          <Text align="center">Hight</Text>
-
-        </WeatherDetail>
-
-
-        <WeatherDetail>
-
-          <SmallLabel align="center" weight="400">
-            {wind}mph
-          </SmallLabel>
-
-          <Text align="center">Wind</Text>
-
-        </WeatherDetail>
-
-
-        <WeatherDetail>
-
-          <SmallLabel align="center" weight="400">
-            {sunrise}
-          </SmallLabel>
-          <Text align="center">Sunrise</Text>
-        </WeatherDetail>
-
-
-        <WeatherDetail>
-          <SmallLabel align="center" weight="400">
-            {Math.floor(lowestTemp)}&#176;
-          </SmallLabel>
-          <Text align="center">Low</Text>
-        </WeatherDetail>
-
-
-        <WeatherDetail>
-          <SmallLabel align="center" weight="400">
-            {humidity}%
-          </SmallLabel>
-          <Text align="center">Rain</Text>
-        </WeatherDetail>
-
+          <WeatherDetail>
+            <SmallLabel align="center" weight="400">
+              {sunset}
+            </SmallLabel>
+            <Text align="center">Sunset</Text>
+          </WeatherDetail>
+        </WeatherDetailsWrapper>
         
-        <WeatherDetail>
-          <SmallLabel align="center" weight="400">
-            {sunset}
-          </SmallLabel>
-          <Text align="center">Sunset</Text>
-        </WeatherDetail>
-
-      </WeatherDetailsWrapper>
-
-
       </LocWeath>
 
-
-      <Chart  weather={weather}  forecast={forecast} />
-
-
-
-
-
-
+      <Chart weather={weather} forecast={forecast} />
 
       <ForecastWrapper>
         <MediumLabel weight="400">Forecast</MediumLabel>
         <Forecast>{forecasts}</Forecast>
       </ForecastWrapper>
-
     </Results>
   );
 };

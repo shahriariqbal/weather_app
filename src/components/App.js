@@ -6,7 +6,6 @@ import Result from './Result';
 import NotFound from './NotFound';
 
 
-
 const AppTitle = styled.h1`
   display: block;
   height: 64px;
@@ -55,7 +54,6 @@ const AppTitle = styled.h1`
 `;
 
 
-
 const WeatherWrapper = styled.div`
   max-width: 1500px;
   margin: 0 auto;
@@ -68,13 +66,6 @@ const WeatherWrapper = styled.div`
 
 
 
-
-
-
-
-
-
-
 class App extends React.Component {
   state = {
     value: '',
@@ -82,16 +73,11 @@ class App extends React.Component {
     error: false,
   };
 
-
-
   handleInputChange = e => {
     this.setState({
       value: e.target.value,
     });
   };
-
-
-
 
   handleSearchCity = e => {
     e.preventDefault();
@@ -123,11 +109,14 @@ class App extends React.Component {
           'Nocvember',
           'December',
         ];
+
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
         const currentDate = new Date();
         const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
           months[currentDate.getMonth()]
         }`;
+
         const sunset = new Date(data1.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
         const sunrise = new Date(data1.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5);
 
@@ -147,6 +136,8 @@ class App extends React.Component {
           wind: data1.wind.speed,
           forecast: data2.list,
         };
+
+
         this.setState({
           weatherInfo,
           error: false,
@@ -162,12 +153,13 @@ class App extends React.Component {
       });
   };
 
+
+
   render() {
     const { value, weatherInfo, error } = this.state;
     return (
       <>
         <AppTitle showLabel={(weatherInfo || error) && true}>Weather Forecast</AppTitle>
-
 
         <WeatherWrapper>
 
@@ -181,8 +173,9 @@ class App extends React.Component {
             change={this.handleInputChange}
             submit={this.handleSearchCity}
           />
-          
+
           {weatherInfo && <Result weather={weatherInfo} />}
+          
           {error && <NotFound error={error} />}
 
         </WeatherWrapper>
